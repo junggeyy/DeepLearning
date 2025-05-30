@@ -3,7 +3,7 @@ import torch
 from torchmetrics.classification import BinaryAccuracy
 
 class ChurnPredictor(L.LightningModule):
-    def __init__(self, model, learning_rate, num_classes):
+    def __init__(self, model, learning_rate):
         super().__init__()
 
         self.model = model

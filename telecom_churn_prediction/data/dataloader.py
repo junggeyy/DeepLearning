@@ -20,6 +20,10 @@ def load_and_process_data(path):
     df["gender"] = df["gender"].replace({"Male": 1, "Female": 0})
     df = pd.get_dummies(df, columns=multi_category_column, drop_first=True)
 
+    # converting any bool columns to int
+    bool_cols = df.select_dtypes(include=["bool"]).columns
+    df[bool_cols] = df[bool_cols].astype(int) 
+
     # dropping the customer ID column as they are just identifiers and not features
     df = df.drop('customerID', axis=1)
 
@@ -39,7 +43,3 @@ def load_and_process_data(path):
     X_test[numerical_column] = scaler.transform(X_test[numerical_column])
 
     return X_train, X_val, X_test, y_train, y_val, y_test
-
-
-
-

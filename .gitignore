@@ -2,3 +2,6 @@ venv/
 .DS_Store
 authentication_banknote_python.py
 test_tf.py
+
+lightning_logs/
+saved_models/

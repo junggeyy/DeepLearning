@@ -3,6 +3,7 @@ from telecom_churn_prediction.data.dataloader import load_and_process_data
 from telecom_churn_prediction.data.my_dataset import MyDataset
 from telecom_churn_prediction.models.PyTorchModel import PyTorchModel
 from telecom_churn_prediction.models.ChurnPredictor import ChurnPredictor
+from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 from torch.utils.data import DataLoader
 from lightning import Trainer
 
@@ -32,10 +33,20 @@ def train():
     print(f"Training model with {num_features}")
 
     # defining our Trainer 
+    early_stop_comeback = EarlyStopping(
+        monitor="val_loss",
+        min_delta=0.001,
+        patience=5,
+        verbose=True,
+        mode="min"
+        )
+
     trainer = Trainer(
-        max_epochs=20,
+        max_epochs=50,
         accelerator="auto",
         devices="auto",
+        callbacks=[early_stop_comeback],
+        logger=True
     )
 
     # training loop

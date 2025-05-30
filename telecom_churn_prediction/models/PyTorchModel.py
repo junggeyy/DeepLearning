@@ -5,13 +5,15 @@ class PyTorchModel(torch.nn.Module):
         super().__init__()
         self.all_layers= torch.nn.Sequential(
 
-            torch.nn.Linear(num_features, 64),
+            torch.nn.Linear(num_features, 128),
             torch.nn.ReLU(),
+            torch.nn.Dropout(0.2),
 
-            torch.nn.Linear(64, 32),
+            torch.nn.Linear(128, 64),
             torch.nn.ReLU(),
+            torch.nn.Dropout(0.2),
 
-            torch.nn.Linear(32, num_classes)
+            torch.nn.Linear(64, num_classes)
         )
 
     def forward(self, x):

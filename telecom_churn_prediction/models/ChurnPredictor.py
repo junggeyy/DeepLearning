@@ -55,4 +55,4 @@ class ChurnPredictor(L.LightningModule):
         self.log('test_acc', self.test_accuracy, on_step=False, on_epoch=True)  
 
     def configure_optimizers(self):
-        return torch.optim.SGD(self.parameters(), lr=self.learning_rate)    
+        return torch.optim.Adam(self.parameters(), lr=self.learning_rate)    

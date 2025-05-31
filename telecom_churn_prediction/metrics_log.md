@@ -47,4 +47,4 @@
 - Train Acc 82.11% | Val Acc 77.13% | Test Acc 80.04%
 
 *most recent run with Run 6's architecture:* <br>
-*Train Acc 81.57% | Val Acc 79.63% | Test Acc 79.00%*
+*Train Acc 81.33% | Val Acc 81.47% | Test Acc 79.47%*

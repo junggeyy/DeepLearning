@@ -46,7 +46,8 @@ def train():
         accelerator="auto",
         devices="auto",
         callbacks=[early_stop_comeback],
-        logger=True
+        logger=True,
+        deterministic=True
     )
 
     # training loop
@@ -72,6 +73,7 @@ def train():
 
 
 if __name__ == "__main__":
+    torch.manual_seed(123)
     train()
 
 
